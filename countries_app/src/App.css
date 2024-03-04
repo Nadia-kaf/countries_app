@@ -1,0 +1,18 @@
+h2 {
+  color: blue;
+}
+
+.Nav {display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 10px;
+  padding-right: 20px;
+  padding-left: 20px;
+  background-color: aliceblue;
+}
+
+ul{
+  display: flex;
+  gap: 30px;
+  justify-content:center;
+}
