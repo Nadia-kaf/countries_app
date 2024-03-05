@@ -1,5 +1,6 @@
 import React from 'react'
 import Navbar from '../../components/navbar/navbar';
+import axios from "axios"
 
 
 
@@ -16,17 +17,53 @@ export default function  Countries() {
 
       displayCountries(); */
 
+      //Getting the Box
 
+      let countriesBox
+
+      //fetching all the arrays
       async function displayAllCountries (){
-         const countries= await fetch(url)
-         console.log("countries", countries.json())
-    
+         const countries= await axios.get(url)
+
+         const countriesBox =countries.data
+         const slicedData = countriesBox.slice(0,5)
+       // console.log('Item',slicedData)
+
+      slicedData.map((country)=> {
+          console.log(country.name.common)
+        })
+        
+  
+        
+         //console.log('countries', countriesBox)
+         //returning what we have fetched
+
+         return  countriesBox
+        
       }
 
-      displayAllCountries();
+      
+      //console.log("countries", countriesBox.json())
+      displayAllCountries()
+ 
+      function displayFiveCountries(){
+       // let fiveItems= countriesBox.slice(0,4)
+        //console.log('five', fiveItems)
+      } 
+      
+     displayFiveCountries()
+      
 
 
       //Function to display 5 countries
+
+
+      
+
+        
+
+
+
   return (
     <>
     <Navbar/>
