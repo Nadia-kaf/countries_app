@@ -1,6 +1,4 @@
-h2 {
-  color: blue;
-}
+
 
 .Nav {display: flex;
   justify-content: space-between;
@@ -17,4 +15,41 @@ ul{
   gap: 30px;
   justify-content:center;
   list-style-type: none;
+}
+
+.outer-div{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 10px;
+    grid-row-gap: 0px;
+    padding: 20px;
+    
+}
+
+.inner-div h2{
+  color: black;
+  text-align: center;
+}
+
+.flags{
+  width: 70%;
+}
+
+img{
+  width: 100%;
+}
+
+.btn{
+  background: #349741;
+  border-radius: 20px;
+  font-family: Arial;
+  color:beige;
+  font-size: 20px;
+  padding: 10px 10px 10px 20px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: #0e72b4;
 }

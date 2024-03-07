@@ -15,7 +15,7 @@ export default function App() {
           <Route path='/' element={<Home/>}></Route>
           <Route path='/AboutUs' element={<AboutUs/>}></Route>
           <Route path='/Countriespage' element={<Countries/>}></Route>
-          <Route path='/country' element={<Country/>}></Route>
+          <Route path='/country/:countryName' element={<Country/>}></Route>
 
         </Routes>
       </BrowserRouter>

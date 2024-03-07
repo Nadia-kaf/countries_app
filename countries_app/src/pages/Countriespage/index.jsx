@@ -1,74 +1,49 @@
-import React from 'react'
-import Navbar from '../../components/navbar/navbar';
-import axios from "axios"
+import React from "react";
+import Navbar from "../../components/navbar/navbar";
+import axios from "axios";
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
+export default function Countries() {
+  const [ country, setCountry ] = useState([]);
+  const url = "https://restcountries.com/v3.1/all";
+  console.log(url);
 
+  useEffect(() => {
+    async function displayAllCountries() {
+      try {
+        const countries = await axios.get(url);
 
-export default function  Countries() {
-      const url="https://restcountries.com/v3.1/all"
-      console.log(url);
-
-
-      /* function displayCountries(){
-        let allCountries = fetch(url).then((response) => {
-            console.log('country', response.json())
-        })
+        const countriesBox = countries.data;
+        setCountry(countriesBox);
+      } catch (error) {
+        console.log(error);
       }
+    }
+    displayAllCountries();
+  }, []);
 
-      displayCountries(); */
-
-      //Getting the Box
-
-      let countriesBox
-
-      //fetching all the arrays
-      async function displayAllCountries (){
-         const countries= await axios.get(url)
-
-         const countriesBox =countries.data
-         const slicedData = countriesBox.slice(0,5)
-       // console.log('Item',slicedData)
-
-      slicedData.map((country)=> {
-          console.log(country.name.common)
-        })
-        
-  
-        
-         //console.log('countries', countriesBox)
-         //returning what we have fetched
-
-         return  countriesBox
-        
-      }
-
-      
-      //console.log("countries", countriesBox.json())
-      displayAllCountries()
- 
-      function displayFiveCountries(){
-       // let fiveItems= countriesBox.slice(0,4)
-        //console.log('five', fiveItems)
-      } 
-      
-     displayFiveCountries()
-      
-
-
-      //Function to display 5 countries
-
-
-      
-
-        
-
+  console.log("country", country);
 
 
   return (
     <>
-    <Navbar/>
-    <h1>Countries' Page</h1>
+      <div>
+        <Navbar />
+        <h1>Countries' Page</h1>
+      </div>
 
+      <div className="outer-div">
+        {country.slice(5, 15).map((item) => (
+          <div className="inner-div">
+            <img className="flags" src={item.flags.png} alt={item.flag.alt} />
+            <h2>{item.name.common}</h2>
+            <h3>{item.name.official}</h3>
+            <button className="btn"> <Link to={`/country/${item.name.common}`} >View more</Link></button>
+          </div>
+          
+        ))}
+      </div>
     </>
   );
 }
